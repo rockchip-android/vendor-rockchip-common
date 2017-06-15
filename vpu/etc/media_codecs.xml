@@ -170,7 +170,7 @@ Only the three quirks included above are recognized at this point:
 	    <Limit name="blocks-per-second" max="244800" min="1"/>
 	    <Limit name="bitrate" range="1-10000000"/>
 	    <Feature name="adaptive-playback"/>
-	    <Limit name="concurrent-instances" max="10" />
+	    <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
     </Decoders>
 
