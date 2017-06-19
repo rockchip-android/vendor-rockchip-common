@@ -23,11 +23,11 @@ PRODUCT_PACKAGES += \
     RkApkinstaller
 endif
 
-ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3288)
-PRODUCT_PACKAGES += \
-    WinStartService \
-    projectX
-endif
+#ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3288)
+#PRODUCT_PACKAGES += \
+#    WinStartService \
+#    projectX
+#endif
 
 ifneq ($(filter rk312x rk3126c, $(TARGET_BOARD_PLATFORM)), )
 PRODUCT_PACKAGES += \
