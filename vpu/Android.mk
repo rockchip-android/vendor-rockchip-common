@@ -221,7 +221,7 @@ endif
 include $(BUILD_PREBUILT)
 endif
 
-ifneq ($(filter rk3228 rk3229 rk322x rk3328 rk3399 rk3288, $(strip $(TARGET_BOARD_PLATFORM))), )
+ifneq ($(filter rk3128  rk3228 rk3229 rk322x rk3328 rk3399 rk3288, $(strip $(TARGET_BOARD_PLATFORM))), )
 include $(CLEAR_VARS)
 LOCAL_MODULE := libffmpeg_vp9dec
 LOCAL_MODULE_TAGS := optional
