@@ -81,7 +81,8 @@ PRODUCT_PACKAGES += \
     rkmcapp-armeabi-v7a-debug \
     ChangeLedStatus \
     WifiDisplay \
-    RKDeviceTest
+    RKDeviceTest \
+	Lightning
   ifeq ($(strip $(BOARD_USE_LOW_MEM256)), true)
         PRODUCT_PACKAGES += \
               SimpleLauncher
