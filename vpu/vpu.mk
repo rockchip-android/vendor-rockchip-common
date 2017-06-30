@@ -43,7 +43,7 @@ PRODUCT_COPY_FILES += \
 	vendor/rockchip/common/vpu/lib/arm/rk322x/libvpu.so:system/lib/libvpu.so \
 	vendor/rockchip/common/vpu/lib/arm/rk322x/modules/vcodec_service.ko:system/lib/modules/vcodec_service.ko
 PRODUCT_PACKAGES += \
-	libiep
+	libiep 
 endif
 
 ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3399)
@@ -54,6 +54,11 @@ PRODUCT_COPY_FILES += \
 	vendor/rockchip/common/vpu/lib/arm64/rk3399/libjpeghwdec.so:system/lib64/libjpeghwdec.so \
         vendor/rockchip/common/vpu/lib/arm/rk3399/libstagefright_hdcp.so:system/lib/libstagefright_hdcp.so \
         vendor/rockchip/common/vpu/lib/arm64/rk3399/libstagefright_hdcp.so:system/lib64/libstagefright_hdcp.so
+endif
+
+ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3128)
+PRODUCT_COPY_FILES += \
+	vendor/rockchip/common/vpu/lib/arm/libffmpeg_vp9dec.so:system/lib/libffmpeg_vp9dec.so 
 endif
 
 ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3366)
