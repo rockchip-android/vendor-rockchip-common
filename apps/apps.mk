@@ -75,7 +75,7 @@ endif
 ifeq ($(strip $(TARGET_BOARD_PLATFORM_PRODUCT)), box)
 PRODUCT_PACKAGES += \
     AllApp	\
-    ITVLauncher	\
+    RKTvLauncher \
     MediaCenter \
     PinyinIME \
     rkmcapp-armeabi-v7a-debug \
