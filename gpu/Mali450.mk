@@ -9,11 +9,11 @@ PRODUCT_COPY_FILES += \
     vendor/rockchip/common/gpu/Mali450/lib/$(TARGET_ARCH)/libGLES_mali.so:obj/lib/libGLES_mali.so \
     vendor/rockchip/common/gpu/Mali450/lib/$(TARGET_ARCH)/hwuihas.bin:system/etc/hwuihas.bin \
     vendor/rockchip/common/gpu/Mali450/lib/$(TARGET_ARCH)/hwuishader.bin:system/etc/hwuishader.bin 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     vendor/rockchip/common/gpu/gpu_performance/etc/performance_info.xml:system/etc/performance_info.xml \
     vendor/rockchip/common/gpu/gpu_performance/etc/packages-compat.xml:system/etc/packages-compat.xml \
     vendor/rockchip/common/gpu/gpu_performance/etc/packages-composer.xml:system/etc/packages-composer.xml \
-#    vendor/rockchip/common/gpu/gpu_performance/bin/$(TARGET_ARCH)/performance:system/bin/performance \
+    vendor/rockchip/common/gpu/gpu_performance/bin/$(TARGET_ARCH)/performance:system/bin/performance \
     vendor/rockchip/common/gpu/gpu_performance/lib/$(TARGET_ARCH)/libperformance_runtime.so:system/lib/libperformance_runtime.so \
     vendor/rockchip/common/gpu/gpu_performance/lib/$(TARGET_ARCH)/gpu.$(TARGET_BOARD_HARDWARE).so:system/lib/hw/gpu.$(TARGET_BOARD_HARDWARE).so
 endif

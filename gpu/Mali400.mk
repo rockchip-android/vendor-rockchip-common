@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
     vendor/rockchip/common/gpu/Mali400/modules/$(TARGET_ARCH)/rk312x/mali.ko:system/lib/modules/mali.ko
 endif
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     vendor/rockchip/common/gpu/gpu_performance/etc/performance_info.xml:system/etc/performance_info.xml \
     vendor/rockchip/common/gpu/gpu_performance/etc/packages-compat.xml:system/etc/packages-compat.xml \
     vendor/rockchip/common/gpu/gpu_performance/etc/packages-composer.xml:system/etc/packages-composer.xml \
