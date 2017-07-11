@@ -101,8 +101,8 @@ ReadCfg() {
 	while read LINE;
 	do
 		$ECHO "LINE: $LINE"
-		local prefix=`echo $LINE|cut -d ':' -f 1`
-		local tmp=`echo $LINE|cut -d ':' -f 2`
+	        local prefix=`echo "$LINE" | $BUSYBOX awk -F ':' '{print $1}'`
+		local tmp=`echo "$LINE" | $BUSYBOX awk -F ':' '{print $2}'`
 		$ECHO "prefix: $prefix"
 		$ECHO "tmp: $tmp"
 		if [ $prefix == "method" ]; then
