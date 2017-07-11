@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# For rockchip rk3036 rk312x rk3288 rk3368 rk3366 rk3399 platforms
-ifneq ($(filter rk%, $(strip $(TARGET_BOARD_PLATFORM))), )
+# For rockchip rk3036 rk312x rk3288 rk3368 rk3366 rk3399 px3 px3-se platforms
+ifneq ($(filter rk% px%, $(strip $(TARGET_BOARD_PLATFORM))), )
 
 PRODUCT_HAVE_IPP ?= true
 PRODUCT_HAVE_RKVPU ?= true
