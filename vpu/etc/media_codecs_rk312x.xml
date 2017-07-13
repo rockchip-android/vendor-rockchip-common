@@ -159,15 +159,14 @@ Only the three quirks included above are recognized at this point:
             <Feature name="adaptive-playback"/>
             <Limit name="concurrent-instances" max="3" />
         </MediaCodec>
-         <MediaCodec name="OMX.google.hevc.decoder" type="video/hevc">
-                <Limit name="size" max="1024x1024" min="64x64"/>
+        <MediaCodec name="OMX.rk.video_decoder.hevc" type="video/hevc">
+                <Limit name="size" max="1920x1088" min="176x144"/>
                 <Limit name="alignment" value="8x8"/>
                 <Limit name="block-size" value="16x16"/>
                 <Limit name="blocks-per-second" max="244800" min="1"/>
                 <Limit name="bitrate" range="1-10000000"/>
                 <Feature name="adaptive-playback"/>
-                <Limit name="concurrent-instances" max="32" />
-        </MediaCodec>     
+        </MediaCodec>  
 
     </Decoders>
                                                                                                             
