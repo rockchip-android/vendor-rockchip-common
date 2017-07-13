@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
+ifneq ($(filter rk% px3se,$(TARGET_BOARD_PLATFORM)), )
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := iso
@@ -69,6 +69,9 @@ else
 LOCAL_SRC_FILES := lib/$(TARGET_ARCH)/rk3399/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 endif
 endif
+ifeq ($(strip $(TARGET_BOARD_PLATFORM)), px3se)
+LOCAL_SRC_FILES :=lib/$(TARGET_ARCH)/px3se/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+endif
 
 include $(BUILD_PREBUILT)
 
@@ -122,6 +125,9 @@ LOCAL_SRC_FILES_$(TARGET_2ND_ARCH) := lib/$(TARGET_2ND_ARCH)/rk3399/$(LOCAL_MODU
 else
 LOCAL_SRC_FILES := lib/$(TARGET_ARCH)/rk3399/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 endif
+endif
+ifeq ($(strip $(TARGET_BOARD_PLATFORM)), px3se)
+LOCAL_SRC_FILES :=lib/$(TARGET_ARCH)/px3se/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 endif
 
 include $(BUILD_PREBUILT)
