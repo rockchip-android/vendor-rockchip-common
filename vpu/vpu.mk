@@ -78,7 +78,7 @@ endif
 
 
 
-ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
+ifneq ($(filter rk% px3se, $(TARGET_BOARD_PLATFORM)), )
 PRODUCT_PACKAGES += \
     librkffplayer \
     libffmpeg \
