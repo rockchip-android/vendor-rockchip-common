@@ -74,7 +74,6 @@ endif
 ###########for box app ################
 ifeq ($(strip $(TARGET_BOARD_PLATFORM_PRODUCT)), box)
 PRODUCT_PACKAGES += \
-    AllApp	\
     RKTvLauncher \
     MediaCenter \
     PinyinIME \
