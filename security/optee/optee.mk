@@ -29,13 +29,15 @@ endif
 
 ifeq ($(strip $(TARGET_ARCH)), arm64)
 PRODUCT_COPY_FILES += \
-	vendor/rockchip/common/security/optee/lib/arm64/tee-supplicant:system/bin/tee-supplicant        \
-        vendor/rockchip/common/security/optee/lib/arm64/libteec.so:system/lib64/libteec.so
+	vendor/rockchip/common/security/optee/lib/arm64/tee-supplicant:system/bin/tee-supplicant
 else
 PRODUCT_COPY_FILES += \
-        vendor/rockchip/common/security/optee/lib/arm/tee-supplicant:system/bin/tee-supplicant	\
-	vendor/rockchip/common/security/optee/lib/arm/libteec.so:system/lib/libteec.so
+        vendor/rockchip/common/security/optee/lib/arm/tee-supplicant:system/bin/tee-supplicant
 endif
+
+PRODUCT_COPY_FILES += \
+        vendor/rockchip/common/security/optee/lib/arm/libteec.so:system/lib/libteec.so  \
+        vendor/rockchip/common/security/optee/lib/arm64/libteec.so:system/lib64/libteec.so
 
 ifeq ($(ENABLE_KEYBOX_PROVISION),true)
 
