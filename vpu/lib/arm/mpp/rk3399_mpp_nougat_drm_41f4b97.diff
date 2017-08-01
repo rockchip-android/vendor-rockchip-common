@@ -29,9 +29,7 @@ index 5de5c8e..c0a1559 100755
  
  # ----------------------------------------------------------------------------
 diff --git a/mpp/base/mpp_frame.cpp b/mpp/base/mpp_frame.cpp
-old mode 100644
-new mode 100755
-index cc83b6b..72c6291
+index 60fceaa..1f1043d 100755
 --- a/mpp/base/mpp_frame.cpp
 +++ b/mpp/base/mpp_frame.cpp
 @@ -140,12 +140,12 @@ MPP_RET mpp_frame_info_cmp(MppFrame frame0, MppFrame frame1)
@@ -84,7 +82,7 @@ index 181e4f9..d5ac5d0
          task->wait.dec_pic_buf = (mpp_buffer_group_unused(mpp->mFrameGroup) < 1);
          if (task->wait.dec_pic_buf)
 diff --git a/mpp/mpi.cpp b/mpp/mpi.cpp
-index 2aa157a..5f85181 100755
+index 89cd484..dc10fef 100755
 --- a/mpp/mpi.cpp
 +++ b/mpp/mpi.cpp
 @@ -63,7 +63,7 @@ static MppCodingTypeInfo support_list[] = {
@@ -97,7 +95,7 @@ index 2aa157a..5f85181 100755
  #if HAVE_JPEGE
      {   MPP_CTX_ENC,    MPP_VIDEO_CodingMJPEG,  "enc",  "jpeg",         },
 diff --git a/osal/allocator/allocator_drm.c b/osal/allocator/allocator_drm.c
-index 0dfd669..b73efad 100644
+index 0dfd669..5ce53d6 100644
 --- a/osal/allocator/allocator_drm.c
 +++ b/osal/allocator/allocator_drm.c
 @@ -75,6 +75,8 @@ static void* drm_mmap(int fd, size_t len, int prot, int flags, loff_t offset)
@@ -108,6 +106,20 @@ index 0dfd669..b73efad 100644
 +
      if (fp_mmap64)
          return fp_mmap64(NULL, len, prot, flags, fd, offset);
+ 
+@@ -318,8 +320,13 @@ MPP_RET os_allocator_drm_import(void *ctx, MppBufferInfo *data)
+ MPP_RET os_allocator_drm_release(void *ctx, MppBufferInfo *data)
+ {
+     (void)ctx;
++    allocator_ctx_drm *p = NULL;
++
++    p = (allocator_ctx_drm *)ctx;
+     munmap(data->ptr, data->size);
+     close(data->fd);
++    drm_free(p->drm_device, (RK_U32)((intptr_t)data->hnd));
++
+     return MPP_OK;
+ }
  
 diff --git a/osal/android/os_allocator.c b/osal/android/os_allocator.c
 index 370a9ec..c112f24 100644
