@@ -43,7 +43,7 @@ endif
 
 BT_FIRMWARE_FILES := $(shell ls $(CUR_PATH)/lib/firmware)
 PRODUCT_COPY_FILES += \
-    $(foreach file, $(BT_FIRMWARE_FILES), $(CUR_PATH)/lib/firmware/$(file):system/vendor/firmware/$(file))
+    $(foreach file, $(BT_FIRMWARE_FILES), $(CUR_PATH)/lib/firmware/$(file):system/etc/firmware/$(file))
 
 #include vendor/rockchip/common/bluetooth/console_start_bt/console_start_bt.mk
 
