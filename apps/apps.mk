@@ -20,7 +20,8 @@ PRODUCT_PACKAGES += \
 ifneq ($(strip $(TARGET_BOARD_PLATFORM_PRODUCT)), box)
 PRODUCT_PACKAGES += \
     MediaFloat      \
-    RkApkinstaller
+    RkApkinstaller \
+    Lightning
 endif
 
 #ifeq ($(strip $(TARGET_BOARD_PLATFORM)), rk3288)
