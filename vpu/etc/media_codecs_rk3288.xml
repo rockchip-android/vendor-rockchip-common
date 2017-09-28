@@ -172,17 +172,6 @@ Only the three quirks included above are recognized at this point:
 	    <Feature name="adaptive-playback"/>
 	    <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
-	<MediaCodec name="OMX.rk.video_decoder.vp9" type="video/x-vnd.on2.vp9">
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-	    <Limit name="size" max="4096x2160" min="176x144"/>
-	    <Limit name="alignment" value="8x8"/>
-	    <Limit name="block-size" value="16x16"/>
-	    <Limit name="blocks-per-second" max="244800" min="1"/>
-	    <Limit name="bitrate" range="1-10000000"/>
-	    <Feature name="adaptive-playback"/>
-	    <Limit name="concurrent-instances" max="6" />
-        </MediaCodec>
     </Decoders>
 
     <Encoders>

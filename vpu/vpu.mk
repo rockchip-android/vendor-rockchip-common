@@ -141,12 +141,22 @@ else
         PRODUCT_COPY_FILES += \
             vendor/rockchip/common/vpu/etc/media_codecs_rk3328.xml:system/etc/media_codecs.xml
     else
-        ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
+        ifneq ($(filter 1, $(BOARD_WIDEVINE_OEMCRYPTO_LEVEL)), )
             PRODUCT_COPY_FILES += \
-                vendor/rockchip/common/vpu/etc/media_codecs.xml:system/etc/media_codecs.xml
+                vendor/rockchip/common/vpu/etc/media_codecs_secure.xml:system/etc/media_codecs.xml
         else
-            PRODUCT_COPY_FILES += \
-                vendor/rockchip/common/vpu/etc/media_codecs_sofia.xml:system/etc/media_codecs.xml
+            ifneq ($(filter rk3288, $(TARGET_BOARD_PLATFORM)), )
+                PRODUCT_COPY_FILES += \
+                    vendor/rockchip/common/vpu/etc/media_codecs_rk3288.xml:system/etc/media_codecs.xml
+            else
+                ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
+                    PRODUCT_COPY_FILES += \
+                        vendor/rockchip/common/vpu/etc/media_codecs.xml:system/etc/media_codecs.xml
+                else
+                    PRODUCT_COPY_FILES += \
+                        vendor/rockchip/common/vpu/etc/media_codecs_sofia.xml:system/etc/media_codecs.xml
+                endif
+            endif
         endif
     endif
 endif
