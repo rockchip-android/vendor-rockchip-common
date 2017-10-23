@@ -41,6 +41,8 @@ ifneq ($(filter rk3228 rk3229 rk322x rk3328, $(strip $(TARGET_BOARD_PLATFORM))),
 PRODUCT_COPY_FILES += \
 	vendor/rockchip/common/vpu/lib/arm/rk322x/libmpp.so:system/lib/libmpp.so \
 	vendor/rockchip/common/vpu/lib/arm/rk322x/libvpu.so:system/lib/libvpu.so \
+	vendor/rockchip/common/vpu/lib/arm/rk322x/libvpu_secure.so:system/lib/libvpu_secure.so \
+	vendor/rockchip/common/vpu/lib/arm64/rk322x/libvpu_secure.so:system/lib64/libvpu_secure.so \
 	vendor/rockchip/common/vpu/lib/arm/rk322x/modules/vcodec_service.ko:system/lib/modules/vcodec_service.ko
 PRODUCT_PACKAGES += \
 	libiep 
