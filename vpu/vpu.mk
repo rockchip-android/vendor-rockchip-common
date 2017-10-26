@@ -135,29 +135,34 @@ else
         endif
     endif
 endif
-ifneq ($(filter rk312x rk3126c rk3128 rk3188, $(TARGET_BOARD_PLATFORM)), )
-    PRODUCT_COPY_FILES += \
-        vendor/rockchip/common/vpu/etc/media_codecs_rk312x.xml:system/etc/media_codecs.xml
-else
-    ifneq ($(filter rk3328, $(TARGET_BOARD_PLATFORM)), )
+ifneq ($(filter rk3228 rk3229 rk322x rk3328 rk3399, $(strip $(TARGET_BOARD_PLATFORM))), )
+    ifneq ($(filter 1, $(BOARD_WIDEVINE_OEMCRYPTO_LEVEL)), )
         PRODUCT_COPY_FILES += \
-            vendor/rockchip/common/vpu/etc/media_codecs_rk3328.xml:system/etc/media_codecs.xml
+            vendor/rockchip/common/vpu/etc/media_codecs_secure.xml:system/etc/media_codecs.xml
     else
-        ifneq ($(filter 1, $(BOARD_WIDEVINE_OEMCRYPTO_LEVEL)), )
+        ifneq ($(filter rk3328, $(TARGET_BOARD_PLATFORM)), )
             PRODUCT_COPY_FILES += \
-                vendor/rockchip/common/vpu/etc/media_codecs_secure.xml:system/etc/media_codecs.xml
+                vendor/rockchip/common/vpu/etc/media_codecs_rk3328.xml:system/etc/media_codecs.xml
         else
-            ifneq ($(filter rk3288, $(TARGET_BOARD_PLATFORM)), )
+            PRODUCT_COPY_FILES += \
+                vendor/rockchip/common/vpu/etc/media_codecs.xml:system/etc/media_codecs.xml
+        endif
+    endif
+else
+    ifneq ($(filter rk312x rk3126c rk3128 rk3188, $(TARGET_BOARD_PLATFORM)), )
+        PRODUCT_COPY_FILES += \
+            vendor/rockchip/common/vpu/etc/media_codecs_rk312x.xml:system/etc/media_codecs.xml
+    else
+        ifneq ($(filter rk3288, $(TARGET_BOARD_PLATFORM)), )
+            PRODUCT_COPY_FILES += \
+                vendor/rockchip/common/vpu/etc/media_codecs_rk3288.xml:system/etc/media_codecs.xml
+        else
+            ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
                 PRODUCT_COPY_FILES += \
-                    vendor/rockchip/common/vpu/etc/media_codecs_rk3288.xml:system/etc/media_codecs.xml
+                    vendor/rockchip/common/vpu/etc/media_codecs.xml:system/etc/media_codecs.xml
             else
-                ifneq ($(filter rk%, $(TARGET_BOARD_PLATFORM)), )
-                    PRODUCT_COPY_FILES += \
-                        vendor/rockchip/common/vpu/etc/media_codecs.xml:system/etc/media_codecs.xml
-                else
-                    PRODUCT_COPY_FILES += \
-                        vendor/rockchip/common/vpu/etc/media_codecs_sofia.xml:system/etc/media_codecs.xml
-                endif
+                PRODUCT_COPY_FILES += \
+                    vendor/rockchip/common/vpu/etc/media_codecs_sofia.xml:system/etc/media_codecs.xml
             endif
         endif
     endif
