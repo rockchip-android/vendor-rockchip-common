@@ -82,7 +82,8 @@ PRODUCT_PACKAGES += \
     ChangeLedStatus \
     WifiDisplay \
     RKDeviceTest \
-	Lightning
+    Lightning \
+    DLNA
   ifeq ($(strip $(BOARD_USE_LOW_MEM256)), true)
         PRODUCT_PACKAGES += \
               SimpleLauncher
