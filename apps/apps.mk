@@ -85,7 +85,7 @@ PRODUCT_PACKAGES += \
     Lightning \
     DLNA
   ifeq ($(strip $(BOARD_USE_LOW_MEM256)), true)
-        PRODUCT_PACKAGES += \
-              SimpleLauncher
+#        PRODUCT_PACKAGES += \
+#              SimpleLauncher
   endif
 endif
