@@ -192,7 +192,7 @@ include $(BUILD_PREBUILT)
 endif
 #end use new vpu framework mpp 
 
-ifneq ($(filter rk3228 rk3229 rk322x rk3328, $(strip $(TARGET_BOARD_PLATFORM))), )
+ifneq ($(filter rk3228 rk3229 rk322x rk3328 rk3126c, $(strip $(TARGET_BOARD_PLATFORM))), )
 include $(CLEAR_VARS)
 LOCAL_MODULE := libmpp
 LOCAL_MODULE_TAGS := optional
@@ -210,7 +210,7 @@ endif
 include $(BUILD_PREBUILT)
 endif
 
-ifneq ($(filter rk3228 rk3229 rk322x rk3328, $(strip $(TARGET_BOARD_PLATFORM))), )
+ifneq ($(filter rk3228 rk3229 rk322x rk3328 rk3126c, $(strip $(TARGET_BOARD_PLATFORM))), )
 include $(CLEAR_VARS)
 LOCAL_MODULE := libvpu
 LOCAL_MODULE_TAGS := optional
