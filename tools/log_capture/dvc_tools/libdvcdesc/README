@@ -1,0 +1,26 @@
+				   LibDvCDesc
+			================================
+
+	DvC Trace is part of USB Debug class which provides a way of sending
+trace data via USB. The specification also defines a set of custom USB
+descriptors in order to be able to share a device internal debug capabilities
+(topology). This library provides an API that helps converting these descriptors
+in various formats:
+
+1) binary
+	The same way the descriptors are presented by an USB gadget as part of
+	the standard USB descriptors.
+
+2) binary-hex
+	The format used by DvC-Trace gadget function driver to expose topology
+	descriptors via sysfs:
+	(<kernel>/Documentation/ABI/testing/sysfs-bus-dvctrace)
+
+3) config
+	A custom json like format. An example can be found in sample/npk.cfg.
+	The language used tries to be as close as possible to the structure
+	definition provided by the spec.
+
+The USB Debug class specification can be found at
+http://www.usb.org/developers/docs/devclass_docs/
+(http://www.usb.org/developers/docs/usb_31_072715.zip).

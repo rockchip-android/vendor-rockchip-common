@@ -1,0 +1,125 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/logcatLoggingStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/text_logcat_status" />
+
+        <TextView
+            android:id="@+id/logcatLoggingStatusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_unknown"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </TableRow>
+
+    <View
+        android:id="@+id/View0"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/textViewEnterPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="@string/text_section_general" />
+
+    <Switch
+        android:id="@+id/logcatKernel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_kernel"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Switch
+        android:id="@+id/logcatMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_main"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Switch
+        android:id="@+id/logcatRadio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_radio"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Switch
+        android:id="@+id/logcatCrash"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_crash"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Switch
+        android:id="@+id/logcatEvent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_event"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Switch
+        android:id="@+id/logcatSystem"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/text_switch_system"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:checked="false" />
+
+    <Button
+        android:id="@+id/selectAllLogcatTraces"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="28dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/text_logcat_select_all" />
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+diff --git a/build/android/arm/make-Android.bash b/build/android/arm/make-Android.bash
+index 5de5c8e..c0a1559 100755
+--- a/build/android/arm/make-Android.bash
++++ b/build/android/arm/make-Android.bash
+@@ -4,7 +4,7 @@ HOST_IP=`hostname --all-ip-addresses`
+ if [ ${HOST_IP} == "10.10.10.65" ] || [ ${HOST_IP} == "10.10.10.67" ]; then
+     ANDROID_NDK=/home/pub/ndk/android-ndk-r10d/
+ else
+-    ANDROID_NDK=~/work/android/ndk/android-ndk-r10d/
++    ANDROID_NDK=~/android-ndk-r10e/
+ fi
+ 
+ PLATFORM=$ANDROID_NDK/platforms/android-21/arch-arm
+@@ -19,6 +19,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../android.toolchain.cmake                     \
+       -DANDROID_NATIVE_API_LEVEL=android-21                                 \
+       -DANDROID_STL=system                                                  \
+       -DCMAKE_RKPLATFORM_ENABLE=ON                                          \
++      -DHAVE_DRM=ON                                                         \
+       ../../../
+ 
+ # ----------------------------------------------------------------------------
+@@ -29,7 +30,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../android.toolchain.cmake                     \
+       #--trace                                                               \
+       #--debug-output                                                        \
+ 
+-#cmake --build . --clean-first -- V=1
++cmake --build . --clean-first -- V=1
+ cmake --build .
+ 
+ # ----------------------------------------------------------------------------
+diff --git a/mpp/base/mpp_frame.cpp b/mpp/base/mpp_frame.cpp
+old mode 100644
+new mode 100755
+index cc83b6b..72c6291
+--- a/mpp/base/mpp_frame.cpp
++++ b/mpp/base/mpp_frame.cpp
+@@ -140,12 +140,12 @@ MPP_RET mpp_frame_info_cmp(MppFrame frame0, MppFrame frame1)
+     MppFrameImpl *f0 = (MppFrameImpl *)frame0;
+     MppFrameImpl *f1 = (MppFrameImpl *)frame1;
+ 
+-    if ((f0->width              == f1->width)  &&
+-        (f0->height             == f1->height) &&
+-        (f0->hor_stride         == f1->hor_stride) &&
+-        (f0->ver_stride         == f1->ver_stride) &&
++    if ((f0->width              >= f1->width)  &&
++        (f0->height             >= f1->height) &&
++        (f0->hor_stride         >= f1->hor_stride) &&
++        (f0->ver_stride         >= f1->ver_stride) &&
+         (f0->fmt                == f1->fmt) &&
+-        (f0->buf_size           == f1->buf_size)) {
++        (f0->buf_size           >= f1->buf_size)) {
+         return MPP_OK;
+     }
+     return MPP_NOK;
+diff --git a/mpp/codec/dec/h265/h265d_parser2_syntax.c b/mpp/codec/dec/h265/h265d_parser2_syntax.c
+index 35c2e83..d496298 100644
+--- a/mpp/codec/dec/h265/h265d_parser2_syntax.c
++++ b/mpp/codec/dec/h265/h265d_parser2_syntax.c
+@@ -328,10 +328,10 @@ RK_S32 h265d_syntax_fill_slice(void *ctx, RK_S32 input_index)
+         gb = &gb_cxt;
+ 
+         READ_ONEBIT(gb, &value);
+-
++/*
+         if ( value != 0)
+             return  MPP_ERR_STREAM;
+-
++*/
+         READ_BITS(gb, 6, &nal_type);
+ 
+         if (nal_type >= 32) {
+diff --git a/mpp/codec/mpp_dec.cpp b/mpp/codec/mpp_dec.cpp
+old mode 100644
+new mode 100755
+index 181e4f9..d5ac5d0
+--- a/mpp/codec/mpp_dec.cpp
++++ b/mpp/codec/mpp_dec.cpp
+@@ -455,6 +455,7 @@ static MPP_RET try_proc_dec_task(Mpp *mpp, DecTask *task)
+     /*
+      * 7. look for a unused hardware buffer for output
+      */
++
+     if (mpp->mFrameGroup) {
+         task->wait.dec_pic_buf = (mpp_buffer_group_unused(mpp->mFrameGroup) < 1);
+         if (task->wait.dec_pic_buf)
+diff --git a/mpp/mpi.cpp b/mpp/mpi.cpp
+index 2aa157a..5f85181 100755
+--- a/mpp/mpi.cpp
++++ b/mpp/mpi.cpp
+@@ -63,7 +63,7 @@ static MppCodingTypeInfo support_list[] = {
+     {   MPP_CTX_DEC,    MPP_VIDEO_CodingMJPEG,  "dec",  "jpeg",         },
+ #endif
+ #if HAVE_H264E
+-//    {   MPP_CTX_ENC,    MPP_VIDEO_CodingAVC,    "enc",  "h.264/AVC",    },
++ //   {   MPP_CTX_ENC,    MPP_VIDEO_CodingAVC,    "enc",  "h.264/AVC",    },
+ #endif
+ #if HAVE_JPEGE
+     {   MPP_CTX_ENC,    MPP_VIDEO_CodingMJPEG,  "enc",  "jpeg",         },
+diff --git a/osal/allocator/allocator_drm.c b/osal/allocator/allocator_drm.c
+index 0dfd669..b73efad 100644
+--- a/osal/allocator/allocator_drm.c
++++ b/osal/allocator/allocator_drm.c
+@@ -75,6 +75,8 @@ static void* drm_mmap(int fd, size_t len, int prot, int flags, loff_t offset)
+         return NULL;
+     }
+ 
++    return mmap64(NULL, len, prot, flags, fd, offset);
++
+     if (fp_mmap64)
+         return fp_mmap64(NULL, len, prot, flags, fd, offset);
+ 
+diff --git a/osal/android/os_allocator.c b/osal/android/os_allocator.c
+index 370a9ec..c112f24 100644
+--- a/osal/android/os_allocator.c
++++ b/osal/android/os_allocator.c
+@@ -132,6 +132,7 @@ MPP_RET os_allocator_get(os_allocator *api, MppBufferType type)
+     break;
+     case MPP_BUFFER_TYPE_ION : {
+         *api = allocator_ion;
++        *api = allocator_drm;
+     }
+     break;
+     case MPP_BUFFER_TYPE_DRM : {

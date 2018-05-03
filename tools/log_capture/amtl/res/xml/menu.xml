@@ -1,0 +1,101 @@
+<!-- AMTL
+
+     Copyright (C) Intel 2015
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/settings_general">
+
+        <EditTextPreference
+            android:key="@string/settings_save_path_key"
+            android:defaultValue="@string/settings_save_path_default"
+            android:summary="@string/settings_save_path_summary"
+            android:title="@string/settings_save_path_title"
+            android:inputType="text|textNoSuggestions" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_logcat">
+
+        <ListPreference
+            android:title="@string/settings_logcat_file_count_title"
+            android:summary="@string/settings_logcat_file_count_summary"
+            android:key="@string/settings_logcat_file_count_key"
+            android:defaultValue="@string/settings_logcat_file_count_default"
+            android:entries="@array/logcatFileCountText"
+            android:entryValues="@array/logcatFileCountValues" />
+
+        <ListPreference
+            android:title="@string/settings_logcat_size_title"
+            android:summary="@string/settings_logcat_size_summary"
+            android:key="@string/settings_logcat_size_key"
+            android:defaultValue="@string/settings_logcat_size_default"
+            android:entries="@array/logcatSizeText"
+            android:entryValues="@array/logcatSizeValues" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_modem"
+        android:key="@string/settings_modem_key">
+
+        <ListPreference
+            android:key="@string/settings_modem_name_key"
+            android:summary="@string/settings_modem_name_summary"
+            android:title="@string/settings_modem_name_title" />
+
+        <ListPreference
+            android:title="@string/settings_modem_profile_title"
+            android:summary="@string/settings_modem_profile_summary"
+            android:key="@string/settings_modem_profile_key"
+            android:defaultValue="@string/settings_modem_profile_default"
+            android:entries="@array/modemProfileText"
+            android:entryValues="@array/modemProfileValues" />
+
+        <EditTextPreference
+            android:key="@string/settings_bp_path_key"
+            android:defaultValue="@string/settings_bp_path_default"
+            android:summary="@string/settings_bp_path_summary"
+            android:title="@string/settings_bp_path_title"
+            android:inputType="text|textNoSuggestions" />
+
+        <EditTextPreference
+            android:key="@string/settings_bp_file_count_key"
+            android:defaultValue="@string/settings_bp_file_count_default"
+            android:summary="@string/settings_bp_file_count_summary"
+            android:title="@string/settings_bp_file_count_title"
+            android:inputType="number" />
+
+        <EditTextPreference
+            android:key="@string/settings_bp_size_key"
+            android:defaultValue="@string/settings_bp_size_default"
+            android:summary="@string/settings_bp_size_summary"
+            android:title="@string/settings_bp_size_title"
+            android:inputType="number" />
+
+        <ListPreference
+            android:title="@string/settings_at_proxy_mode_title"
+            android:summary="@string/settings_at_proxy_mode_summary"
+            android:key="@string/settings_at_proxy_mode_key"
+            android:entries="@array/atProxyModeText"
+            android:entryValues="@array/atProxyModeValues" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

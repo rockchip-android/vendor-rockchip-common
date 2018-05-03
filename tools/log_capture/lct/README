@@ -1,0 +1,66 @@
+= LCT =
+Provides a way to create crashlog events from various sources
+    - native applications
+    - java applications
+    - command line
+
+
+= Event =
+A LCT event is described as follows:
+1. Submitter name, text representing the client submitting the
+    event (similar to android LOG_TAG) maximum length 31.
+2. Event name, short textual description of the event (eg. ANR)
+    (maximum length 31)
+3. Event type, (STAT, INFO, ERROR)
+4. Data[0-5], String representing the data fields that will be
+    posted on crashtool.
+5. File-list, a ';' separated list of files to be added by crashlog
+    upon the event creation. (absolute paths)
+6. Additional steps, bit-mask of any additional steps to be performed
+    by crashlog. Currently implemented: attach aplogs, kernel logs,
+    firmware logs.
+
+
+= Native Applications =
+    Native applications should use the interface provided by liblct
+(lct/lib) by dynamically linking to it. If the lct feature is not
+available (crashlog is not providing the feature, running on an
+non debug build) the events will be dismissed and logged.
+The full description of the API is provided in lctclient.h
+
+
+= Java applications =
+    Managed applications can use a similar interface via JNI, by
+adding a class like:
+
+-------------------------------------------------------------
+package com.intel.lct;
+public class Native {
+    public static final int LCT_EV_STAT = 0;
+    public static final int LCT_EV_INFO = 1;
+    public static final int LCT_EV_ERROR = 2;
+    public static final int LCT_EV_FLAGS_PRIORITY_LOW = 1;
+    public static final int LCT_ADDITIONAL_APLOG = 1;
+    public static final int LCT_ADDITIONAL_LAST_KMSG = 2;
+    public static final int LCT_ADDITIONAL_FWMSG = 4;
+    static {
+        System.loadLibrary("lct");
+    }
+    static int log(int type, String submitter, String event,
+                   int flags,Object... valist){
+        return lctLog(type, submitter, event, flags, valist);
+    }
+    static native int lctLog(int type, String submitter,
+                             String event, int flags,
+                             Object[] valist );
+}
+-------------------------------------------------------------
+
+The application should the be able to use Native.log the same way
+lct_log macro is used in native applications.
+
+
+= Command line =
+    "lctlog" (lct/cli) is provided both as a native API usage
+example and a command line interface to this API.
+Run "lctclient -h" for details.

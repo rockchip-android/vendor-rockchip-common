@@ -1,0 +1,12 @@
+#!/system/bin/sh
+
+#############################################
+## This script is used to send SIGUSR1 to mts
+## in order to unconfigure lsdics
+#############################################
+
+pid=`pidof mts`
+if [[ "$pid" != "" ]]
+then
+    kill -SIGUSR1 $pid
+fi

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">amtl</string>
+    <string name="menu_name">Settings</string>
+    <string name="label_unknown">UNKNOWN</string>
+    <string name="label_modem_status">Modem status:</string>
+    <string name="label_mts_status">Modem Trace Server state:</string>
+    <string name="label_oct_status">Modem internal logging:</string>
+    <string name="label_at_proxy_status">AT PROXY mode:</string>
+    <string name="label_profile_name">Profile name:</string>
+    <string name="expert_mode">Expert Mode</string>
+    <string name="logcat_log">Android log</string>
+    <string name="apply_conf_text">Validate masters</string>
+    <string name="master_txt">Master values to set:</string>
+    <string name="master_bb_sw_txt">BB_SW:</string>
+    <string name="master_3g_sw_txt">3G_SW:</string>
+    <string name="master_digrfx_txt">DIGRFX:</string>
+    <string name="master_digrfx2_txt">DIGRFX2:</string>
+    <string name="master_lte_l1_sw_txt">LTE_L1_SW:</string>
+    <string name="master_3g_dsp_txt">3G_DSP:</string>
+    <string name="master_tdscdma_l1_sw_txt">TDSCDMA_L1_SW:</string>
+    <string name="master_sig_mon_txt">SIG_MON:</string>
+    <string name="txt_enter_path">Enter the Expert Modem Configuration file you want to apply:</string>
+    <string name="txt_choose">Validate selected file</string>
+
+
+    <string name="text_logcat_select_all">Select all</string>
+    <string name="text_logcat_status">Logcat traces:</string>
+
+    <string name="text_start">Start</string>
+    <string name="text_stop">Stop</string>
+    <string name="text_save_logs">Save</string>
+    <string name="text_switch_output">Switch</string>
+    <string name="text_clear_logs">Clear</string>
+
+    <string name="text_switch_kernel">Kernel</string>
+    <string name="text_switch_main">Main</string>
+    <string name="text_switch_radio">Radio</string>
+    <string name="text_switch_crash">Crash</string>
+    <string name="text_switch_event">Event</string>
+    <string name="text_switch_system">System</string>
+
+    <string name="text_switch_meminfo">Memory Information</string>
+    <string name="text_switch_procrank">Procrank log</string>
+    <string name="text_switch_toplog">Top log</string>
+    <string name="text_switch_cpuload">CPU loading</string>
+
+    <string name="text_switch_modem">Enable modem dump</string>
+
+    <string name="text_section_general">General</string>
+    <string name="text_section_modem">Modem</string>
+    <string name="text_section_sysstats">System Statistics</string>
+
+    <string name="settings_menu">Settings</string>
+    <string name="about_name">About</string>
+    <string name="labelSettings">Settings</string>
+    <string name="settings_logcat">Logcat Settings</string>
+    <string name="settings_general">General Settings</string>
+    <string name="settings_modem">Modem Settings</string>
+    <string name="settings_modem_key">settings_modem_key</string>
+
+    <string name="settings_user_save_path_key">settings_user_save_path_key</string>
+    <string name="settings_user_save_path_default">/logs</string>
+
+    <string name="settings_save_path_key">settings_save_path_key</string>
+    <string name="settings_save_path_title">Logs path</string>
+    <string name="settings_save_path_summary">Default logs path</string>
+    <string name="settings_save_path_default">/logs</string>
+
+    <string name="settings_logcat_file_count_key">settings_logcat_file_count_key</string>
+    <string name="settings_logcat_file_count_title">Logs count</string>
+    <string name="settings_logcat_file_count_summary">Default trace count</string>
+    <string name="settings_logcat_file_count_default">16</string>
+
+    <string name="settings_logcat_size_key">settings_logcat_size_key</string>
+    <string name="settings_logcat_size_title">Logs size</string>
+    <string name="settings_logcat_size_summary">Default trace size</string>
+    <string name="settings_logcat_size_default">5120</string>
+
+    <string name="settings_modem_name_key">settings_modem_name_key</string>
+    <string name="settings_modem_name_title">Modem name</string>
+    <string name="settings_modem_name_summary">Default modem</string>
+
+    <string name="settings_modem_profile_key">settings_modem_profile_key</string>
+    <string name="settings_modem_profile_title">Modem profile</string>
+    <string name="settings_modem_profile_summary">Default profile</string>
+    <string name="settings_modem_profile_default">0</string>
+
+    <string name="settings_bp_path_key">settings_bp_path_key</string>
+    <string name="settings_bp_path_title">BP logs path</string>
+    <string name="settings_bp_path_summary">Default BP logs path</string>
+    <string name="settings_bp_path_default">/logs</string>
+
+    <string name="settings_bp_file_count_key">settings_bp_file_count_key</string>
+    <string name="settings_bp_file_count_title">BP logs count</string>
+    <string name="settings_bp_file_count_summary">Default BP logs count</string>
+    <string name="settings_bp_file_count_default">3</string>
+
+    <string name="settings_bp_size_key">settings_bp_size_key</string>
+    <string name="settings_bp_size_title">BP logs size in kB</string>
+    <string name="settings_bp_size_summary">Default BP logs size</string>
+    <string name="settings_bp_size_default">200000</string>
+
+    <string name="settings_at_proxy_mode_key">settings_at_proxy_mode_key</string>
+    <string name="settings_at_proxy_mode_title">AT PROXY mode</string>
+    <string name="settings_at_proxy_mode_summary">Default mode</string>
+
+</resources>
